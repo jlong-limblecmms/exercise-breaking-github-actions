@@ -1,0 +1,12 @@
+on:
+  push:
+
+jobs:
+  deploy:
+    environment:
+      name: >-
+        a
+        b
+    steps:
+      - name: Deploy
+        run: echo "Deploying to ${{ github.event.deployment.environment }}"
