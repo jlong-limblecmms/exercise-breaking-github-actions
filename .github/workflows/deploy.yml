@@ -9,7 +9,7 @@ jobs:
       A: ${{ steps.set_env.outputs.A }}
     steps:
       - id: set_env
-        run: echo A=$'A\n' | tee $GITHUB_ENV
+        run: .github/workflows/script.sh | tee $GITHUB_ENV
 
   deploy:
     runs-on: ubuntu-22.04
@@ -19,4 +19,4 @@ jobs:
     steps:
 
       - name: Deploy
-        run: echo "Deploying to ${{ github.event.deployment.environment }}"
+        run: echo "Deploying to ${{ needs.prepareEnv.outputs.A }}"
